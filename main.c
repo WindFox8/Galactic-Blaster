@@ -139,7 +139,7 @@ char gameOverDisplay[26][56] = {
     "                  |               SCORE                |",
     "                  |                                    |",
     "                  |                                    |",
-    "                  |                                    |",
+    "                  |     DIGITE SEU NOME (3 DIGITOS)    |",
     "                  |                                    |",
     "                  |                                    |",
     "                  |                                    |",
@@ -160,6 +160,7 @@ int count;
 int score = 0;
 time_t start_time, end_time;
 double elapsed_time;
+char nome[3];
 
 int main() {
 	showMenu();
@@ -276,7 +277,7 @@ void gameStart(){
 	        boardDisplay[i][j] = ' ';
         }
     }
-    positionX = 42;
+    positionX = 37;
     boardDisplay[24][positionX] = '\x06';
     boardDisplay[25][positionX] = '|';
     boardDisplay[25][positionX-1] = '/';
@@ -331,6 +332,9 @@ void movimentacao(){
 		
 		case 'a':
 			if(positionX!=20){
+				if (boardDisplay[24][positionX-1] != ' ' || boardDisplay[24][positionX-2] != ' '){
+					gameOverFunction();
+				}
 				boardDisplay[24][positionX] = ' ';
 				boardDisplay[25][positionX+1] = ' ';
 				positionX--;
@@ -407,20 +411,31 @@ void shotMoviment(){
 }
 
 void gameOverFunction(){
-	system("cls");
-	for (int i = 0; i < 26; i++) {
-        printf("\n");
-        for (int j=0; j<56; j++){
-            printf("%c", gameOverDisplay[i][j]);
-            if(i==15 && j == 34){
-        			printf("%03d",score);
-        			j=37;
-        	}
-        }
-    }
-    key = getch();
+	for(int k=0; k<4; k++){
+		system("cls");
+		for (int i = 0; i < 26; i++) {
+	        printf("\n");
+	        for (int j=0; j<56; j++){
+	            printf("%c", gameOverDisplay[i][j]);
+	            if(i==15 && j == 34){
+	        		printf("%03d",score);
+	        		j=37;
+	        	}
+	        	if(i==19 && j == 34){
+	        		printf("%s", nome);
+	        		j=34+k;
+	        	}
+
+	        }
+		}
+	        	
+	    nome[k] = getch();
+	}        
 }
+	
 
+    
+ 
 
-
+ 
 
