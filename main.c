@@ -5,149 +5,149 @@
 #include <stdbool.h>
 #include <time.h>
 
-char menu[26][66] = {
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                Galactic Blaster              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                  > NEW GAME <                |",
-    "                  |                                              |",
-    "                  |                    RECORDES                  |",
-    "                  |                                              |",
-    "                  |                    CREDITOS                  |",
-    "                  |                                              |",
-    "                  |                      SAIR                    |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-	"                  |                                              |"   
+char menuDisplay[26][56] = {
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |          Galactic Blaster          |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |            > NEW GAME <            |",
+    "                  |                                    |",
+    "                  |              RECORDES              |",
+    "                  |                                    |",
+    "                  |              CREDITOS              |",
+    "                  |                                    |",
+    "                  |                SAIR                |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+	"                  |                                    |"   
 };
 
-char board[26][66] = {
-    "                  |                                              |",
-    "                  |                   CRONOMETRO                 |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-	"                  |                                              |"   
+char boardDisplay[26][56] = {
+    "                  |             SCORE:                 |",
+    "                  |              TIME:                 |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+	"                  |                                    |"   
 };
 
-char creditos[26][66] = {
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                DESENVOLVEDORES:              |",
-    "                  |                                              |",
-    "                  |                     Lucas                    |",
-    "                  |                     Veiga                    |",
-    "                  |                     Correr                   |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                  GAME DESIGN:                |",
-    "                  |                                              |",
-    "                  |                     Lucas                    |",
-    "                  |                     Veiga                    |",
-    "                  |                     Correr                   |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |             GESTORES DE QUALIDADE:           |",
-    "                  |                                              |",
-    "                  |                     Lucas                    |",
-    "                  |                     Veiga                    |",
-    "                  |                     Correr                   |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |        APERTE ALGO PARA VOLTAR AO MENU       |",
-    "                  |                                              |",
-	"                  |                                              |"   
+char creditosDisplay[26][56] = {
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |           DESENVOLVEDORES:         |",
+    "                  |                                    |",
+    "                  |                Lucas               |",
+    "                  |                Veiga               |",
+    "                  |                Correr              |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |             GAME DESIGN:           |",
+    "                  |                                    |",
+    "                  |                Lucas               |",
+    "                  |                Veiga               |",
+    "                  |                Correr              |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |        GESTORES DE QUALIDADE:      |",
+    "                  |                                    |",
+    "                  |                Lucas               |",
+    "                  |                Veiga               |",
+    "                  |                Correr              |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |  APERTE ALGO PARA VOLTAR AO MENU   |",
+    "                  |                                    |",
+	"                  |                                    |"   
 };
 
-char sair[26][66] = {
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                Galactic Blaster              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                    OBRIGADO                  |",
-    "                  |                   POR  JOGAR                 |",
-    "                  |                                              |",
-    "                  |                 ATE  A PROXIMA               |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-	"                  |                                              |"   
+char sairDisplay[26][56] = {
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |           Galactic Blaster         |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |              OBRIGADO              |",
+    "                  |             POR  JOGAR             |",
+    "                  |                                    |",
+    "                  |           ATE  A PROXIMA           |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+	"                  |                                    |"   
 };
 
-char gameOverDisplay[26][66] = {
-    "                  |                                              |",
-    "                  |            GGG     A   M   M  EEEE           |",
-    "                  |           G       A A  MM MM  E              |",
-    "                  |           G  GG  AAAAA M M M  EEE            |",
-    "                  |           G   G  A   A M   M  E              |",
-    "                  |            GGG   A   A M   M  EEEE           |",
-    "                  |                                              |",
-    "                  |            OOO   V   V  EEEE  RRRR           |",
-    "                  |           O   O  V   V  E     R   R          |",
-    "                  |           O   O  V   V  EEE   RRRR           |",
-    "                  |           O   O   V V   E     R  R           |",
-    "                  |            OOO     V    EEEE  R   R          |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-    "                  |                                              |",
-	"                  |                                              |"   
+char gameOverDisplay[26][56] = {
+    "                  |                                    |",
+    "                  |      GGG     A   M   M  EEEE       |",
+    "                  |     G       A A  MM MM  E          |",
+    "                  |     G  GG  AAAAA M M M  EEE        |",
+    "                  |     G   G  A   A M   M  E          |",
+    "                  |      GGG   A   A M   M  EEEE       |",
+    "                  |                                    |",
+    "                  |      OOO   V   V  EEEE  RRRR       |",
+    "                  |     O   O  V   V  E     R   R      |",
+    "                  |     O   O  V   V  EEE   RRRR       |",
+    "                  |     O   O   V V   E     R  R       |",
+    "                  |      OOO     V    EEEE  R   R      |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |               SCORE                |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+	"                  |                                    |"   
 };
 
 
@@ -158,6 +158,8 @@ bool gameOver = false;
 int randomPosition;
 int count;
 int score = 0;
+time_t start_time, end_time;
+double elapsed_time;
 
 int main() {
 	showMenu();
@@ -168,8 +170,8 @@ void showMenu() {
 	system("cls");
     for (int i = 0; i < 26; i++) {
         printf("\n");
-        for (int j=0; j<66; j++){
-            printf("%c", menu[i][j]);
+        for (int j=0; j<56; j++){
+            printf("%c", menuDisplay[i][j]);
         }
     }
 
@@ -194,7 +196,7 @@ void showMenu() {
             break;
             
         case ' ':
-        	opcaoMenuSelecionada();
+        	opcaoSelecionadaMenu();
         	break;
             
         default:
@@ -204,38 +206,38 @@ void showMenu() {
 
 void atualizarMenu(){
 	for (int i=10; i<17; i++){
-		menu[i][37] = ' ';
-		menu[i][48] = ' ';
+		menuDisplay[i][31] = ' ';
+		menuDisplay[i][42] = ' ';
 		i++;
 	}
 	
 	switch (menuOption){
 		case 1:
-			menu[10][37] = '>';
-			menu[10][48] = '<';
+			menuDisplay[10][31] = '>';
+			menuDisplay[10][42] = '<';
 			break;
 			
 		case 2:
-			menu[12][37] = '>';
-			menu[12][48] = '<';
+			menuDisplay[12][31] = '>';
+			menuDisplay[12][42] = '<';
 			break;
 			
 		case 3:
-			menu[14][37] = '>';
-			menu[14][48] = '<';
+			menuDisplay[14][31] = '>';
+			menuDisplay[14][42] = '<';
 			break;
 			
 		case 4:
-			menu[16][37] = '>';
-			menu[16][48] = '<';
+			menuDisplay[16][31] = '>';
+			menuDisplay[16][42] = '<';
 			break;
 	}
 }
 
-void opcaoMenuSelecionada(){
+void opcaoSelecionadaMenu(){
 	switch (menuOption){
 		case 1:
-			newGame();
+			gameStart();
 			break;
 			
 		case 2:
@@ -246,8 +248,8 @@ void opcaoMenuSelecionada(){
 			system("cls");
 			for (int i = 0; i < 26; i++) {
 	        	printf("\n");
-	        	for (int j=0; j<66; j++){
-	           		printf("%c", creditos[i][j]);
+	        	for (int j=0; j<56; j++){
+	           		printf("%c", creditosDisplay[i][j]);
         		}
     		}
     		key = getch();
@@ -258,8 +260,8 @@ void opcaoMenuSelecionada(){
 			system("cls");
 			for (int i = 0; i < 26; i++) {
 	        	printf("\n");
-	        	for (int j=0; j<66; j++){
-	           		printf("%c", sair[i][j]);
+	        	for (int j=0; j<56; j++){
+	           		printf("%c", sairDisplay[i][j]);
         		}
     		}
     		sleep(5);
@@ -268,29 +270,35 @@ void opcaoMenuSelecionada(){
 	}
 }
 
-void newGame(){
+void gameStart(){
 	for (int i = 3; i < 26; i++) {
-	    for (int j=19; j<65; j++){
-	        board[i][j] = ' ';
+	    for (int j=19; j<55; j++){
+	        boardDisplay[i][j] = ' ';
         }
     }
     positionX = 42;
-    board[24][positionX] = '\x06';
-    board[25][positionX] = '|';
-    board[25][positionX-1] = '/';
-    board[25][positionX+1] = '\\';
+    boardDisplay[24][positionX] = '\x06';
+    boardDisplay[25][positionX] = '|';
+    boardDisplay[25][positionX-1] = '/';
+    boardDisplay[25][positionX+1] = '\\';
     gameOver = false;
+    start_time = time(NULL);
     
     while (!gameOver){
     	system("cls");
+    	end_time = time(NULL);
+    	elapsed_time = difftime(end_time, start_time);
     	for (int i = 0; i < 26; i++) {
         	printf("\n");
-        	for (int j=0; j<66; j++){
-        		if(i==0 && j == 42){
+        	for (int j=0; j<56; j++){
+        		if(i==0 && j == 39){
         			printf("%03d",score);
-        			j=44;
-				}else{
-            		printf("%c", board[i][j]);
+        			j=41;
+				} else if (i==1 && j == 39){
+        			printf("%03d", (int)elapsed_time);
+        			j=41;
+				} else {
+            		printf("%c", boardDisplay[i][j]);
             	}
         	}
     	}
@@ -299,7 +307,7 @@ void newGame(){
     		movimentacao();
 		}
 		atualizarObjetos();
-    	usleep(100000);
+    	usleep(50000);
 	}
 	gameOverFunction();
 }
@@ -307,31 +315,34 @@ void newGame(){
 void movimentacao(){
 	switch (key){
 		case 'd':
-			if(positionX!=63){
-				board[24][positionX] = ' ';
-				board[25][positionX-1] = ' ';
+			if(positionX!=53){
+				if (boardDisplay[24][positionX+1] != ' ' || boardDisplay[24][positionX+2] != ' '){
+					gameOverFunction();
+				}
+				boardDisplay[24][positionX] = ' ';
+				boardDisplay[25][positionX-1] = ' ';
 				positionX++;
-				board[24][positionX] = '\x06';
-    			board[25][positionX] = '|';
-    			board[25][positionX-1] = '/';
-    			board[25][positionX+1] = '\\';
+				boardDisplay[24][positionX] = '\x06';
+    			boardDisplay[25][positionX] = '|';
+    			boardDisplay[25][positionX-1] = '/';
+    			boardDisplay[25][positionX+1] = '\\';
 			}
 			break;
 		
 		case 'a':
 			if(positionX!=20){
-				board[24][positionX] = ' ';
-				board[25][positionX+1] = ' ';
+				boardDisplay[24][positionX] = ' ';
+				boardDisplay[25][positionX+1] = ' ';
 				positionX--;
-				board[24][positionX] = '\x06';
-    			board[25][positionX] = '|';
-    			board[25][positionX-1] = '/';
-    			board[25][positionX+1] = '\\';
+				boardDisplay[24][positionX] = '\x06';
+    			boardDisplay[25][positionX] = '|';
+    			boardDisplay[25][positionX-1] = '/';
+    			boardDisplay[25][positionX+1] = '\\';
 			}
 			break;
 			
 		case ' ':
-			board[23][positionX] = '.';
+			boardDisplay[23][positionX] = '.';
 			break;
 		
 		default:
@@ -343,30 +354,30 @@ void atualizarObjetos(){
 	meteorMoviment();
 	shotMoviment();
 	
-	if(count!=10){
+	if(count!=15){
 		count++;
 	} else {
 		count = 0;
 		srand(time(NULL));
-		randomPosition = rand() % (63 - 20 + 1) + 20;
-		board[3][randomPosition] = '*';
+		randomPosition = rand() % (53 - 20 + 1) + 20;
+		boardDisplay[3][randomPosition] = 'O';
 	}
 } 
 
 void meteorMoviment(){
-	if(count % 2 == 0){
+	if(count % 5 == 0){
 		for (int i = 26; i > 1; i--) {
-	       	for (int j=65; j>0; j--){
-	           	if (board[i][j] == '*'){
-	           		if(board[i+1][j] == '.'){
+	       	for (int j=55; j>0; j--){
+	           	if (boardDisplay[i][j] == 'O'){
+	           		if(boardDisplay[i+1][j] == '.'){
 	           			score+=1;
-						board[i][j] = ' ';	
-						board[i+1][j] = ' ';	
-					} else if (i == 26 || board[i+1][j] != ' '){
+						boardDisplay[i][j] = ' ';	
+						boardDisplay[i+1][j] = ' ';	
+					} else if (i == 26 || boardDisplay[i+1][j] != ' '){
 	           			gameOver = true;
 					} else {
-						board[i][j] = ' ';	
-						board[i+1][j] = '*';
+						boardDisplay[i][j] = ' ';	
+						boardDisplay[i+1][j] = 'O';
 					}
 				}
 	        }
@@ -377,17 +388,17 @@ void meteorMoviment(){
 void shotMoviment(){
 		if(count % 2 == 0){
 		for (int i = 2; i < 24; i++) {
-	       	for (int j=0; j < 65; j++){
-	           	if (board[i][j] == '.'){
-	           		if(board[i-1][j] == '*'){
+	       	for (int j=0; j < 55; j++){
+	           	if (boardDisplay[i][j] == '.'){
+	           		if(boardDisplay[i-1][j] == 'O'){
 	           			score+=1;
-						board[i][j] = ' ';	
-						board[i-1][j] = ' ';
+						boardDisplay[i][j] = ' ';	
+						boardDisplay[i-1][j] = ' ';
 					} else if (i == 2){
-	           			board[i][j] = ' ';	
+	           			boardDisplay[i][j] = ' ';	
 					} else{
-						board[i][j] = ' ';
-						board[i-1][j] = '.';
+						boardDisplay[i][j] = ' ';
+						boardDisplay[i-1][j] = '.';
 					}
 				}
 	        }
@@ -399,8 +410,12 @@ void gameOverFunction(){
 	system("cls");
 	for (int i = 0; i < 26; i++) {
         printf("\n");
-        for (int j=0; j<66; j++){
+        for (int j=0; j<56; j++){
             printf("%c", gameOverDisplay[i][j]);
+            if(i==15 && j == 34){
+        			printf("%03d",score);
+        			j=37;
+        	}
         }
     }
     key = getch();
