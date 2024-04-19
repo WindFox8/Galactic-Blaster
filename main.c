@@ -63,6 +63,35 @@ char boardDisplay[26][56] = {
 	"                  |                                    |"   
 };
 
+char recordesDisplay[26][56] = {
+    "                  |                                    |",
+    "                  |------------------------------------|",
+    "                  |               RECORDES             |",
+    "                  |------------------------------------|",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+	"                  |                                    |"   
+};
+
 char creditosDisplay[26][56] = {
     "                  |                                    |",
     "                  |                                    |",
@@ -243,7 +272,7 @@ void opcaoSelecionadaMenu(){
 			break;
 			
 		case 2:
-			printf("recordes selecionado");
+			listarRecordes();
 			break;
 			
 		case 3:
@@ -497,7 +526,43 @@ void saveRecord(){
 	
 	arquivo = fopen("recordes.txt", "w");
 	fwrite(recordes, sizeof(char), strlen(recordes), arquivo);
-	fclose(arquivo);
-	
+	fclose(arquivo);	
 }
 
+void listarRecordes(){
+	FILE *arquivo;
+    char recordes[50];
+	int i = 0;
+	
+    arquivo = fopen("recordes.txt", "r");
+	
+	while (i < 50 && (recordes[i] = fgetc(arquivo)) != EOF) {
+		i++;
+	}
+	
+	fclose(arquivo);
+	    
+	int k=0;
+	system("cls");
+    for (int i = 0; i < 26; i++) {
+    	printf("\n");
+	   	for (int j=0; j<56; j++){
+	   		
+	   		if ((i == 5 || i == 9 || i == 13 || i == 17 || i == 21) && j == 33){
+	   			printf("Nome: %.*s", 3, &recordes[k]);
+	   			k += 3;
+	   			j = 41;
+			} else if ((i == 6 || i == 10 || i == 14 || i == 18 || i == 22) && j == 32){
+	   			printf("SCORE: %.*s", 3, &recordes[k]);
+	   			k += 3;
+	   			j = 41;
+			} else if ((i == 7 || i == 11 || i == 15 || i == 19 || i == 23) && j == 33){
+	   			printf("TIME: %.*s", 3, &recordes[k]);
+	   			k += 4;
+	   			j = 41;
+			} else {
+	       		printf("%c", recordesDisplay[i][j]);
+	        }
+       	}
+    }
+}
