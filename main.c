@@ -239,6 +239,7 @@ void opcaoSelecionadaMenu(){
 	switch (menuOption){
 		case 1:
 			gameStart();
+			showMenu(); 
 			break;
 			
 		case 2:
@@ -284,6 +285,10 @@ void gameStart(){
     boardDisplay[25][positionX+1] = '\\';
     gameOver = false;
     start_time = time(NULL);
+    score=0;
+    nome[0] = '\0';
+    nome[1] = '\0';
+    nome[2] = '\0';
     
     while (!gameOver){
     	system("cls");
@@ -421,21 +426,78 @@ void gameOverFunction(){
 	        		printf("%03d",score);
 	        		j=37;
 	        	}
-	        	if(i==19 && j == 34){
+	        	if(i==20 && j == 34){
 	        		printf("%s", nome);
 	        		j=34+k;
 	        	}
-
+	        	if (i==23 && j == 34){
+        			printf("%03d", (int)elapsed_time);
+        			j=37;
+				}
 	        }
+		}   	
+	    if(k<3){
+			nome[k] = getch();
 		}
-	        	
-	    nome[k] = getch();
-	}        
+	    
+	}
+	key = getch();
+	saveRecord(); 
 }
 	
+void saveRecord(){
 
-    
- 
+	FILE *arquivo;
+    char recordes[50];
+    int i = 0;
 
- 
+    arquivo = fopen("recordes.txt", "r");
+
+    while (i < 50 && (recordes[i] = fgetc(arquivo)) != EOF) {
+        i++;
+    }
+
+    fclose(arquivo);
+	
+    for (int k = 3; k < 50; k+=10){
+    	
+	    char scoreTempString[3];
+	    memcpy(scoreTempString, &recordes[k], 3);
+		int scoreTempInt;
+		scoreTempInt = atoi(scoreTempString);
+		
+		if (score > scoreTempInt) {
+			
+			char recordTemp[10];
+
+		    recordTemp[0] = nome[0];
+		    recordTemp[1] = nome[1];
+		    recordTemp[2] = nome[2];
+		
+		    char scoreTemp[3];
+		    snprintf(scoreTemp, sizeof(scoreTemp), "%03d", score);
+		    memcpy(&recordTemp[3], scoreTemp, 3);
+		
+		    char timeTemp[3];
+   			snprintf(timeTemp, sizeof(timeTemp), "%03d", (int)elapsed_time);
+    		memcpy(&recordTemp[6], timeTemp, 3);
+		
+			recordTemp[9] = '\0';
+			
+			char recordCopy[9];
+		    
+		    for ( int j=k-3; j<50; j+=10){
+		    	memcpy(recordCopy, &recordes[j], 9);
+		    	memcpy(&recordes[j], recordTemp, 9);
+		    	memcpy(recordTemp, recordCopy, 9);
+			}
+				
+		}
+	}
+	
+	arquivo = fopen("recordes.txt", "w");
+	fwrite(recordes, sizeof(char), strlen(recordes), arquivo);
+	fclose(arquivo);
+	
+}
 
