@@ -89,7 +89,7 @@ char recordesDisplay[26][56] = {
     "                  |                                    |",
     "                  |                                    |",
     "                  |                                    |",
-	"                  |                                    |"   
+    "                  |  APERTE ALGO PARA VOLTAR AO MENU   |"  
 };
 
 char creditosDisplay[26][56] = {
@@ -273,6 +273,7 @@ void opcaoSelecionadaMenu(){
 			
 		case 2:
 			listarRecordes();
+			key = getch();
 			showMenu();
 			break;
 			
