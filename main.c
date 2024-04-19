@@ -273,6 +273,7 @@ void opcaoSelecionadaMenu(){
 			
 		case 2:
 			listarRecordes();
+			showMenu();
 			break;
 			
 		case 3:
