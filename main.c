@@ -412,6 +412,7 @@ void meteorMoviment(){
 						boardDisplay[i][j] = ' ';	
 						boardDisplay[i+1][j] = ' ';	
 					} else if (i == 26 || boardDisplay[i+1][j] != ' '){
+						boardDisplay[i][j] = ' ';
 	           			gameOver = true;
 					} else {
 						boardDisplay[i][j] = ' ';	
@@ -520,7 +521,7 @@ void saveRecord(){
 		    	memcpy(&recordes[j], recordTemp, 9);
 		    	memcpy(recordTemp, recordCopy, 9);
 			}
-				
+			k=50;	
 		}
 	}
 	
