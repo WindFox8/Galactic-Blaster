@@ -5,6 +5,35 @@
 #include <stdbool.h>
 #include <time.h>
 
+char tutorial[26][56] = {
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |          Galactic Blaster          |",
+    "                  |                                    |",
+    "                  |    A Terra corre grande perigo     |",
+    "                  |  uma chuva de meteoros esta vindo  |",
+    "                  |  diretamente em direcao ao planeta |",
+    "                  |  cabe a voce, a ultima nave capaz  |",
+    "                  |   deter os meteoritos, proteger    |",
+    "                  |   as pessoas mas se somente um     |",
+    "                  |   deles atravessar suas defesas    |",
+    "                  |       tudo estara acabado.         |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |             COMANDOS:              |",
+    "                  |                                    |",
+    "                  |     W/S - Interage com o menu      |",
+    "                  |     A/D - Movimenta a nave         |",
+    "                  |  ESPACO - Confirma selecao/Dispara |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |                                    |",
+    "                  |  APERTE ALGO PARA VOLTAR AO MENU   |",
+    "                  |                                    |",
+	"                  |                                    |"   
+};
+
 char menuDisplay[26][56] = {
     "                  |                                    |",
     "                  |                                    |",
@@ -192,9 +221,22 @@ double elapsed_time;
 char nome[3];
 
 int main() {
+	intro();
 	showMenu();
 	return 0;
 }
+
+void intro(){
+	system("cls");
+	for (int i = 0; i < 26; i++) {
+        printf("\n");
+	    for (int j=0; j<56; j++){
+		    printf("%c", tutorial[i][j]);
+     	}
+    }
+  	key = getch();
+}
+
 
 void showMenu() {
 	system("cls");
