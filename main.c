@@ -1,24 +1,25 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <conio.h>
-#include <unistd.h>
-#include <stdbool.h>
-#include <time.h>
+#include <stdio.h>  // Biblioteca padrão de entrada e saída
+#include <stdlib.h> // Biblioteca padrão para funções utilitárias (como system)
+#include <conio.h>  // Biblioteca para manipulação de console (getch, kbhit)
+#include <unistd.h> // Biblioteca para funções POSIX (sleep, usleep)
+#include <stdbool.h> // Biblioteca para tipo de dado booleano
+#include <time.h>   // Biblioteca para manipulação de tempo
 
+// Matrizes que armazenam a interface gráfica de diferentes telas do jogo
 char tutorial[26][56] = {
     "                  |                                    |",
     "                  |                                    |",
     "                  |                                    |",
     "                  |          Galactic Blaster          |",
     "                  |                                    |",
-    "                  |    A Terra corre grande perigo     |",
+    "                  |  A Terra corre grande perigo       |",
     "                  |  uma chuva de meteoros esta vindo  |",
     "                  |  diretamente em direcao ao planeta |",
     "                  |  cabe a voce, a ultima nave capaz  |",
-    "                  |   deter os meteoritos, proteger    |",
-    "                  |   as pessoas mas se somente um     |",
-    "                  |   deles atravessar suas defesas    |",
-    "                  |       tudo estara acabado.         |",
+    "                  |  deter os meteoritos, proteger     |",
+    "                  |  as pessoas mas se somente um      |",
+    "                  |  deles atravessar suas defesas     |",
+    "                  |  tudo estara acabado.              |",
     "                  |                                    |",
     "                  |                                    |",
     "                  |             COMANDOS:              |",
@@ -209,23 +210,25 @@ char gameOverDisplay[26][56] = {
 };
 
 
-int positionX;
-int menuOption = 1;
-char key;
-bool gameOver = false;
-int randomPosition;
-int count;
-int score = 0;
-time_t start_time, end_time;
-double elapsed_time;
-char nome[3];
+// Variáveis globais
+int positionX; // Posição horizontal da nave no tabuleiro
+int menuOption = 1; // Opção selecionada no menu
+char key; // Armazena a tecla pressionada pelo usuário
+bool gameOver = false; // Estado do jogo
+int randomPosition; // Posição aleatória para a queda dos meteoros
+int count; // Contador para o tempo
+int score = 0; // Pontuação do jogador
+time_t start_time, end_time; // Tempo de início e fim do jogo
+double elapsed_time; // Tempo decorrido
+char nome[3]; // Nome do jogador
 
 int main() {
-	intro();
-	showMenu();
+	intro(); // Mostra a tela de introdução
+	showMenu(); // Mostra o menu principal
 	return 0;
 }
 
+// Função que exibe a tela de introdução
 void intro(){
 	system("cls");
 	for (int i = 0; i < 26; i++) {
@@ -237,7 +240,7 @@ void intro(){
   	key = getch();
 }
 
-
+// Função que exibe o menu principal
 void showMenu() {
 	system("cls");
     for (int i = 0; i < 26; i++) {
@@ -249,7 +252,7 @@ void showMenu() {
 
 	key = getch();
 	
-	
+	// Verifica a tecla pressionada e chama a função correspondente
 	switch (key) {
 		case 'w':
             if(menuOption!=1){
@@ -276,6 +279,7 @@ void showMenu() {
 	}
 }
 
+// Função que atualiza o menu com base na opção selecionada
 void atualizarMenu(){
 	for (int i=10; i<17; i++){
 		menuDisplay[i][31] = ' ';
@@ -306,6 +310,7 @@ void atualizarMenu(){
 	}
 }
 
+// Função que executa a ação correspondente à opção selecionada no menu
 void opcaoSelecionadaMenu(){
 	switch (menuOption){
 		case 1:
@@ -345,12 +350,15 @@ void opcaoSelecionadaMenu(){
 	}
 }
 
+// Função que inicia o jogo
 void gameStart(){
 	for (int i = 3; i < 26; i++) {
 	    for (int j=19; j<55; j++){
 	        boardDisplay[i][j] = ' ';
         }
     }
+    
+    //Define o estado inicial do jogo
     positionX = 37;
     boardDisplay[24][positionX] = '\x06';
     boardDisplay[25][positionX] = '|';
@@ -363,6 +371,7 @@ void gameStart(){
     nome[1] = '\0';
     nome[2] = '\0';
     
+    // Loop principal do jogo
     while (!gameOver){
     	system("cls");
     	end_time = time(NULL);
@@ -391,6 +400,7 @@ void gameStart(){
 	gameOverFunction();
 }
 
+// Função que movimenta a nave com base na tecla pressionada
 void movimentacao(){
 	switch (key){
 		case 'd':
@@ -432,6 +442,7 @@ void movimentacao(){
 	}
 }
 
+// Função que atualiza a posição dos meteoros/tiros e gera novos meteoros
 void atualizarObjetos(){
 	meteorMoviment();
 	shotMoviment();
@@ -446,6 +457,7 @@ void atualizarObjetos(){
 	}
 } 
 
+// Função que atualiza a posição dos meteoros
 void meteorMoviment(){
 	if(count % 5 == 0){
 		for (int i = 26; i > 1; i--) {
@@ -468,6 +480,7 @@ void meteorMoviment(){
 	}
 }
 
+// Função que atualiza a posição dos tiros
 void shotMoviment(){
 		if(count % 2 == 0){
 		for (int i = 2; i < 24; i++) {
@@ -489,6 +502,13 @@ void shotMoviment(){
 	}	
 }
 
+void clearInputBuffer() {
+    while (_kbhit()) {
+        _getch();
+    }
+}
+
+// Função que lida com o término do jogo/exibi pontuação e tempo final/pede nome para gravar em recordes
 void gameOverFunction(){
 	for(int k=0; k<4; k++){
 		system("cls");
@@ -509,8 +529,12 @@ void gameOverFunction(){
         			j=37;
 				}
 	        }
-		}   	
-	    if(k<3){
+		}
+		if(k==0){
+			sleep(1.5);
+			clearInputBuffer();
+		}
+	    if(k<3){  
 			nome[k] = getch();
 		}
 	    
@@ -518,7 +542,8 @@ void gameOverFunction(){
 	key = getch();
 	saveRecord(); 
 }
-	
+
+// Função que salva o recorde do jogador	
 void saveRecord(){
 
 	FILE *arquivo;
@@ -574,6 +599,7 @@ void saveRecord(){
 	fclose(arquivo);	
 }
 
+// Função que lista os recordes
 void listarRecordes(){
 	FILE *arquivo;
     char recordes[50];
